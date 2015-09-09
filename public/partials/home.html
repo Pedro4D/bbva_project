@@ -1,0 +1,94 @@
+<div class="row">
+    <h1> Hello</h1>
+    <div><a ng-click="start('consumption')">Consumption Patterns</a></div>
+    <div><a ng-click="start('merchants')">Merchants Categories</a></div>
+    <div><a ng-click="start('customers')">Customers Zipcode</a></div>
+    <div><a ng-click="start('cards')">Client Cubes</a></div>
+    <div class="google-map"
+         center="position.coords"
+         zoom="zoomProperty"
+         markers="markersProperty"
+         latitude="clickedLatitudeProperty"
+         longitude="clickedLongitudeProperty"
+         mark-click="false"
+         draggable="true"
+         fit="false"
+         events="eventsProperty"
+         style="height: 600px; width: 600px">
+    </div>
+    <table>
+        <thead>
+        <th>Date</th>
+        </thead>
+        <tr ng-repeat="stat in stats">
+            <td>{{stat.date}}</td>
+            <td>
+                <ul ng-repeat="day in stat.days">
+                    <li>Day: {{day.day}}</li>
+                    <li>Average: {{day.avg}}</li>
+                    <li>Max: {{day.max}}</li>
+                    <li>Min: {{day.min}}</li>
+                    <li>std: {{day.std}}</li>
+                    <li>Mode: {{day.mode}}</li>
+                    <li>Num Cards: {{day.num_cards}}</li>
+                    <li><ul ng-repeat="hour in stat.days.hours">
+                        <li>Hour: {{hour.hour}}</li>
+                        <li>Average: {{hour.avg}}</li>
+                        <li>Max: {{hour.max}}</li>
+                        <li>Min: {{hour.min}}</li>
+                        <li>std: {{hour.std}}</li>
+                        <li>Mode: {{hour.mode}}</li>
+                        <li>Num Cards: {{hour.num_cards}}</li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+        <th>Code</th>
+        <th>Description</th>
+        </thead>
+        <tr ng-repeat="category in categories.categories">
+            <td>{{category.code}}</td>
+            <td>{{category.description}}</td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+        <th>ZipCode</th>
+        <th>Number Cards</th>
+        <th>Number Payments</th>
+        <th>Incomes</th>
+        </thead>
+        <tr ng-repeat="zipcode in zipcodes">
+            <td>{{zipcode.label}}</td>
+            <td>{{zipcode.num_cards}}</td>
+            <td>{{zipcode.num_payments}}</td>
+            <td>{{zipcode.incomes}}</td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+        <th>Name</th>
+        <th>Values</th>
+        </thead>
+        <tr ng-repeat="range in cards.ranges">
+            <td>{{range.name}}</td>
+                <td><table>
+                    <thead>
+                    <th>Label</th>
+                    <th>Description</th>
+                    </thead>
+                    <tr ng-repeat="value in range.values">
+                    <td>{{value.label}}</td>
+                    <td>{{value.description}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

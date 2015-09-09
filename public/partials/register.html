@@ -1,0 +1,39 @@
+<div>
+    <h1>Register</h1>
+    <form class="form-horizontal" ng-submit="register()" name="registerForm" >
+        <div class="control-group">
+            <label class="control-label" for="username">Username</label>
+            <div class="controls">
+                <input type="text" placeholder="Username" ng-model="user.username" id="username" required data-ng-minlength="1" data-ng-maxlength="20" autofocus />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <input type="password" placeholder="Password" ng-model="user.password" id="password" required data-ng-minlength="5" data-ng-maxlength="60" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+                <input type="email" placeholder="myemail@mydom.es" ng-model="user.email" id="email" required />
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+        </div>
+        <div class="alert alert-error" ng-show="registerForm.$invalid && registerForm.$dirty">
+            <strong>Please correct the following errors:</strong>
+            <ul>
+                <li ng-show="registerForm.username.$error.required">Username is required</li>
+                <li ng-show="registerForm.username.$error.minlength">Username has to be at least 1 character long</li>
+                <li ng-show="registerForm.username.$error.maxlength">Username has to be at most 20 character long</li>
+                <li ng-show="registerForm.password.$error.required">Password is required</li>
+                <li ng-show="registerForm.password.$error.minlength">Password must be at least 5 characters long</li>
+                <li ng-show="registerForm.password.$error.maxlength">Password must be at most 60 characters long</li>
+            </ul>
+        </div>
+    </form>
+</div>
